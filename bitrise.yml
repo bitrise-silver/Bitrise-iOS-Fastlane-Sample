@@ -28,6 +28,11 @@ workflows:
     - activate-ssh-key@4:
         run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
     - git-clone@6: {}
+    - danger@2:
+        inputs:
+        - github_api_token: "$gh_token"
+        - additional_options: ci
+        - github_host: ''
     - cache-pull@2: {}
     - certificate-and-profile-installer@1: {}
     - recreate-user-schemes@1:
